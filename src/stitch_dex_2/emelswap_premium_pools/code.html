@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>emelSwap | Luxury Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#fdd013",
+                    "on-primary": "#000000",
+                    "surface": "#000000",
+                    "surface-container": "#0a0a0a",
+                    "surface-bright": "#141414",
+                    "outline-variant": "#262626",
+                    "gold-accent": "#FFD217"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "1.5rem",
+                    "xl": "2.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+        }
+        .luxury-card {
+            background: linear-gradient(180deg, rgba(20, 20, 20, 0.8) 0%, rgba(5, 5, 5, 0.95) 100%);
+            border: 1px solid rgba(255, 210, 23, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .luxury-card:hover {
+            border-color: rgba(255, 210, 23, 0.2);
+            box-shadow: 0 0 40px rgba(255, 210, 23, 0.03), inset 0 0 20px rgba(255, 210, 23, 0.02);
+            transform: translateY(-2px);
+        }
+        .token-glow {
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.1));
+        }
+        .sparkline {
+            fill: none;
+            stroke: #FFD217;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .sparkline-bg {
+            fill: url(#gradient-spark);
+            opacity: 0.1;
+        }
+        .text-glow {
+            text-shadow: 0 0 15px rgba(255, 210, 23, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-surface text-white antialiased selection:bg-gold-accent selection:text-black">
+<svg aria-hidden="true" style="width:0;height:0;position:absolute;">
+<defs>
+<lineargradient id="gradient-spark" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#FFD217"></stop>
+<stop offset="100%" stop-color="transparent"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- Cinematic Header -->
+<header class="fixed top-0 w-full z-50 bg-black/60 backdrop-blur-3xl border-b border-white/5">
+<div class="flex justify-between items-center h-20 px-12 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-12">
+<div class="text-xl font-black tracking-tighter uppercase">emel<span class="text-gold-accent">Swap</span></div>
+<nav class="hidden md:flex items-center space-x-10 text-[11px] uppercase tracking-[0.2em] font-semibold text-white/40">
+<a class="hover:text-white transition-colors" href="#">Market</a>
+<a class="text-gold-accent" href="#">Pools</a>
+<a class="hover:text-white transition-colors" href="#">Nodes</a>
+<a class="hover:text-white transition-colors" href="#">Governance</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-transparent border border-white/10 text-white/80 text-[11px] uppercase tracking-widest px-6 py-2.5 rounded-full hover:bg-white/5 transition-all">
+                Portfolio
+            </button>
+<button class="bg-gold-accent text-black font-bold text-[11px] uppercase tracking-widest px-8 py-2.5 rounded-full hover:brightness-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,210,23,0.2)]">
+                Connect
+            </button>
+</div>
+</div>
+</header>
+<main class="pt-40 pb-32 px-12 max-w-[1600px] mx-auto">
+<!-- Hero Section -->
+<div class="mb-20 flex justify-between items-end">
+<div class="max-w-3xl">
+<h1 class="text-7xl font-light tracking-tight text-white mb-6">Liquidity <span class="font-black italic">Vaults</span></h1>
+<p class="text-white/40 text-xl font-light leading-relaxed">
+                Experience institutional-grade liquidity provision. Real-time yield monitoring across the Midnight Monolith network.
+            </p>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-3 bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined">query_stats</span>
+                Global Stats
+            </button>
+<button class="flex items-center gap-3 bg-gold-accent text-black hover:brightness-110 transition-all px-10 py-4 rounded-full text-xs font-black uppercase tracking-widest shadow-[0_0_30px_rgba(255,210,23,0.15)]">
+<span class="material-symbols-outlined">add</span>
+                Create Pool
+            </button>
+</div>
+</div>
+<!-- Metrics Bar -->
+<div class="grid grid-cols-4 gap-8 mb-24">
+<div class="border-l border-white/10 pl-8 py-2">
+<div class="text-white/30 text-[10px] uppercase tracking-[0.2em] mb-2">Network TVL</div>
+<div class="text-4xl font-bold text-white tracking-tighter">$1,240,482,100</div>
+<div class="text-gold-accent text-xs font-medium mt-1">↑ 2.4% <span class="text-white/20 ml-1 font-normal">24h</span></div>
+</div>
+<div class="border-l border-white/10 pl-8 py-2">
+<div class="text-white/30 text-[10px] uppercase tracking-[0.2em] mb-2">24H Volume</div>
+<div class="text-4xl font-bold text-white tracking-tighter">$482,104,921</div>
+<div class="text-white/20 text-xs mt-1">Institutional Grade</div>
+</div>
+<div class="border-l border-white/10 pl-8 py-2">
+<div class="text-white/30 text-[10px] uppercase tracking-[0.2em] mb-2">Active Pools</div>
+<div class="text-4xl font-bold text-white tracking-tighter">42</div>
+<div class="text-white/20 text-xs mt-1">Verified Assets Only</div>
+</div>
+<div class="border-l border-white/10 pl-8 py-2">
+<div class="text-white/30 text-[10px] uppercase tracking-[0.2em] mb-2">Avg Protocol APR</div>
+<div class="text-4xl font-bold text-gold-accent tracking-tighter text-glow">14.2%</div>
+<div class="text-white/20 text-xs mt-1">Compounded Daily</div>
+</div>
+</div>
+<!-- Data Dashboard Headers -->
+<div class="grid grid-cols-12 gap-6 px-8 mb-6 text-[10px] uppercase tracking-[0.2em] font-bold text-white/30">
+<div class="col-span-3">Asset Pairs</div>
+<div class="col-span-2">Liquidity (TVL)</div>
+<div class="col-span-2">24H Volume Trend</div>
+<div class="col-span-2 text-center">Efficiency (APR)</div>
+<div class="col-span-3 text-right">Liquidity Management</div>
+</div>
+<!-- High-End Pool Cards -->
+<div class="space-y-4">
+<!-- Row 1 -->
+<div class="luxury-card rounded-2xl p-8 grid grid-cols-12 gap-6 items-center">
+<div class="col-span-3 flex items-center gap-5">
+<div class="flex -space-x-4">
+<div class="w-12 h-12 rounded-full border-2 border-black bg-black p-1.5 token-glow relative z-20">
+<img alt="ETH" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfedLg-VPxmU4Yq8v9boUKysC_E2GsBP65_dh9HZ7IehrWftHwMTp5GR4EDt752I4tyNG8H-CHEddaGeoT0yE_Mmccl3T44akkBnOaHduZWtnQ799hOhOkuM7KWc3uj8ro9b4PxZ8qAguausBHGOsZJCsuGrfldCtI5hcgmRIftyDC44M7hOtm1aOGokiE2tXyAtbM1P0ZDVai2sDY9hO7mhcqJEGH_OIRHzMbEubQkev0yU-cF-mqxwDVaFdgRU93IgaqkTYGkmyW"/>
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-black bg-black p-1.5 token-glow relative z-10">
+<img alt="USDC" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzoQWwrn9woUlBS1zNlXrsJj1g6PNzJTZce6xT8-sVXFDTBOpcnHLbIr3QXBujVgGvL4yrI6nFMm7ThF3guhs9RUvcTpGBhwj2B7nrlBNI_f1UdqL6wc2gjrFknGKuBIdW23CUSFtV8jmFF0CuUp1M8VQAdji9AvCkkUhumgDErvV9k00cqz6S2WPAkhDsWEpb3mo6KqXWrkpplrRpbSyl22ui20FsJehqTqjQCRFaUJl7UcM75D5PDp8eII5py2-EvULf5ipgftkP"/>
+</div>
+</div>
+<div>
+<div class="font-black text-xl tracking-tight">ETH / USDC</div>
+<div class="text-[10px] uppercase tracking-widest text-white/30 font-bold">Stable LP • 0.05% Tier</div>
+</div>
+</div>
+<div class="col-span-2">
+<div class="text-xl font-semibold">$420.5M</div>
+<div class="text-[10px] text-white/30 mt-1 uppercase tracking-wider">Depth: High</div>
+</div>
+<div class="col-span-2">
+<svg class="w-full h-10" viewbox="0 0 100 40">
+<path class="sparkline-bg" d="M0 40 L0 30 Q 10 10, 20 25 T 40 15 T 60 20 T 80 5 T 100 15 L 100 40 Z"></path>
+<path class="sparkline" d="M0 30 Q 10 10, 20 25 T 40 15 T 60 20 T 80 5 T 100 15"></path>
+</svg>
+</div>
+<div class="col-span-2 text-center">
+<div class="inline-block px-4 py-1.5 rounded-full border border-gold-accent/20 bg-gold-accent/5 text-gold-accent font-black text-sm italic">
+                    24.5%
+                </div>
+</div>
+<div class="col-span-3 flex justify-end gap-3">
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 hover:border-white/30 transition-all">
+<span class="material-symbols-outlined text-white/60">analytics</span>
+</button>
+<button class="bg-gold-accent text-black px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,210,23,0.1)]">
+                    Deposit
+                </button>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="luxury-card rounded-2xl p-8 grid grid-cols-12 gap-6 items-center">
+<div class="col-span-3 flex items-center gap-5">
+<div class="flex -space-x-4">
+<div class="w-12 h-12 rounded-full border-2 border-black bg-black p-1.5 token-glow relative z-20">
+<img alt="WBTC" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUcLMrANR5Wu-fvpxaabFa-fGXkaQ5cv-Y0J-0PLmSarsOEZgZrsxTNLao2RAD6c5jsSv-sA-LEdvb0K7JeIL39lv2O_8NdBOCGjfMvC6yCip5Hz9Sz8Y3EvWmojVYTwZX4jdfNhcUHKt0VAsvm0av3dkp_K-KD88Qp6NWgTyZqHXPEqf4q7Q9hrD6bWoU8hxWCCzKVsK0V6IT0zQZTr0OksaaecgKPjsHf5py5pNvSfInNbEkeP8EaCT9NhJUagh79FqyBKlQxA69"/>
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-black bg-black p-1.5 token-glow relative z-10">
+<img alt="ETH" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnfpJilPQQjj3LxIdwfAPV4d0NbEFl_A96lO2lgL6rKV8Rg0nctjAVlFPuPq9wuSQYZAgjlYGIfv0fzQdaOrIr13HaVWqTsH3nDr3E9XUu0W-2bD0OjfA5znsUKyykZx8aRiddRpWRFCnfqevKbJ6MoY7M9vDkF7IaMiQhtXeo0Z06Gv5UjQ_DzDU2GcA9e_4U1NZh8QtOATE6Cqylq7IBRJdCDOSLEZLYTEgyemp7CytqCsHdjHGDd-IJj8pr2PbZcXUQCC7X51bd"/>
+</div>
+</div>
+<div>
+<div class="font-black text-xl tracking-tight">WBTC / ETH</div>
+<div class="text-[10px] uppercase tracking-widest text-white/30 font-bold">Standard LP • 0.3% Tier</div>
+</div>
+</div>
+<div class="col-span-2">
+<div class="text-xl font-semibold">$152.8M</div>
+<div class="text-[10px] text-white/30 mt-1 uppercase tracking-wider">Depth: Mid</div>
+</div>
+<div class="col-span-2">
+<svg class="w-full h-10" viewbox="0 0 100 40">
+<path class="sparkline-bg" d="M0 40 L0 35 Q 10 35, 20 20 T 40 30 T 60 10 T 80 25 T 100 30 L 100 40 Z"></path>
+<path class="sparkline" d="M0 35 Q 10 35, 20 20 T 40 30 T 60 10 T 80 25 T 100 30"></path>
+</svg>
+</div>
+<div class="col-span-2 text-center">
+<div class="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-white/60 font-black text-sm italic">
+                    8.2%
+                </div>
+</div>
+<div class="col-span-3 flex justify-end gap-3">
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 hover:border-white/30 transition-all">
+<span class="material-symbols-outlined text-white/60">analytics</span>
+</button>
+<button class="bg-gold-accent text-black px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition-all">
+                    Deposit
+                </button>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="luxury-card rounded-2xl p-8 grid grid-cols-12 gap-6 items-center">
+<div class="col-span-3 flex items-center gap-5">
+<div class="flex -space-x-4">
+<div class="w-12 h-12 rounded-full border-2 border-black bg-black p-1.5 token-glow relative z-20">
+<img alt="SOL" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2aVyWImnVsBpDR3VajvYVV3P8dBIVw8z9sA-eFt_YfIbDKzF_BCJ0mpp0BsojJK0rnVKg3fuwKJxwPedVH2oAUkHtghYMZEd2YDAo0zvFxMSPJdCuDh9KoCUiMf5H_J3wugJOMvvOUsHHdGBTK86JRplUaZt7OwEMo9jHNNVRR0vmcctN42iBpcnuf5EALPa00W4RFDJG0mK0_qLHEawA4OsjVATCctWC4fpI7l8kYdMkyDqrGMJ8Hl_HYgcJacoXwvQDxSTP_3nT"/>
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-black bg-black p-1.5 token-glow relative z-10">
+<img alt="USDC" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAebGKavOFgpQaxrJGBuafqYlgvMj64eaSDuA8lHaLI0ihBsaBmU7K503jspj9jC419NFMdnnrZZ70vWdTh9z5MsGMe_RPA88RYzMXRu-ohEFtobiizlVtl0RRZ_WuQgdRuN9S-VY8MAN8RMRdXO9RoQT-9gyur_LXaUe3cGPkyEEwTH5WedtHD9wYvqSzNdJtYbszfJ3Tov9HC5Oj6PDeC8vBhHP-1zGM1XuhJZY8-Mid6qCfemoKLRfm4SdUvrSjFD7pfd87cm-Q"/>
+</div>
+</div>
+<div>
+<div class="font-black text-xl tracking-tight">SOL / USDC</div>
+<div class="text-[10px] uppercase tracking-widest text-white/30 font-bold">Volatile • 0.01% Tier</div>
+</div>
+</div>
+<div class="col-span-2">
+<div class="text-xl font-semibold">$92.1M</div>
+<div class="text-[10px] text-white/30 mt-1 uppercase tracking-wider">Depth: High Flux</div>
+</div>
+<div class="col-span-2">
+<svg class="w-full h-10" viewbox="0 0 100 40">
+<path class="sparkline-bg" d="M0 40 L0 38 Q 10 38, 20 30 T 40 35 T 60 5 T 80 15 T 100 5 L 100 40 Z"></path>
+<path class="sparkline" d="M0 38 Q 10 38, 20 30 T 40 35 T 60 5 T 80 15 T 100 5"></path>
+</svg>
+</div>
+<div class="col-span-2 text-center">
+<div class="inline-block px-4 py-1.5 rounded-full border border-gold-accent/20 bg-gold-accent/5 text-gold-accent font-black text-sm italic">
+                    42.1%
+                </div>
+</div>
+<div class="col-span-3 flex justify-end gap-3">
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 hover:border-white/30 transition-all">
+<span class="material-symbols-outlined text-white/60">analytics</span>
+</button>
+<button class="bg-gold-accent text-black px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition-all">
+                    Deposit
+                </button>
+</div>
+</div>
+</div>
+<!-- Footnote Info -->
+<div class="mt-24 max-w-2xl">
+<div class="flex items-center gap-4 mb-6">
+<div class="h-[1px] flex-1 bg-white/10"></div>
+<div class="text-[10px] uppercase tracking-[0.3em] font-bold text-white/30">System Protocol Warning</div>
+<div class="h-[1px] flex-1 bg-white/10"></div>
+</div>
+<div class="bg-surface-container rounded-2xl p-10 border border-white/5 relative overflow-hidden">
+<h3 class="text-xl font-bold mb-4">Risk Disclosure: Concentrated Liquidity</h3>
+<p class="text-white/40 leading-loose text-sm font-light">
+                Providing liquidity on emelSwap V3 involves sophisticated market mechanics. Please be aware of <span class="text-white">Impermanent Loss</span> risks within concentrated tick ranges. We recommend using our advanced analytics suite to simulate positions before deployment.
+            </p>
+<a class="inline-flex items-center gap-2 mt-8 text-gold-accent font-bold uppercase tracking-widest text-[10px] group" href="#">
+                Review LP documentation
+                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
+</a>
+<!-- Subtle accent glow -->
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-gold-accent/5 blur-[80px]"></div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav (Mobile Only) - Simplified for Luxury -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-6 py-6 bg-black/80 backdrop-blur-3xl z-50 border-t border-white/10">
+<a class="text-white/40" href="#"><span class="material-symbols-outlined">analytics</span></a>
+<a class="text-gold-accent" href="#"><span class="material-symbols-outlined">waves</span></a>
+<a class="text-white/40" href="#"><span class="material-symbols-outlined">account_balance_wallet</span></a>
+</nav>
+</body></html>

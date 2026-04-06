@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#262626",
+                    "surface-container-lowest": "#000000",
+                    "surface-container-low": "#131313",
+                    "on-primary-fixed-variant": "#645000",
+                    "inverse-primary": "#735d00",
+                    "primary-fixed": "#fdd013",
+                    "tertiary-dim": "#d2e45c",
+                    "surface-container": "#191919",
+                    "surface-bright": "#2c2c2c",
+                    "surface": "#0e0e0e",
+                    "on-tertiary-fixed-variant": "#5a6500",
+                    "tertiary-fixed": "#e0f368",
+                    "secondary": "#f7e54f",
+                    "on-tertiary-container": "#505a00",
+                    "outline": "#757575",
+                    "on-surface": "#ffffff",
+                    "error-dim": "#d53d18",
+                    "primary-container": "#fdd013",
+                    "on-primary-container": "#594700",
+                    "on-secondary-fixed": "#474000",
+                    "background": "#0e0e0e",
+                    "surface-container-high": "#1f1f1f",
+                    "on-tertiary-fixed": "#3f4700",
+                    "on-secondary-container": "#fff8da",
+                    "outline-variant": "#484848",
+                    "surface-container-highest": "#262626",
+                    "error": "#ff7351",
+                    "tertiary-container": "#e0f368",
+                    "on-secondary-fixed-variant": "#665c00",
+                    "inverse-on-surface": "#555555",
+                    "on-primary": "#635000",
+                    "on-background": "#ffffff",
+                    "on-surface-variant": "#ababab",
+                    "primary": "#ffe07f",
+                    "secondary-fixed": "#f7e54f",
+                    "secondary-container": "#695f00",
+                    "inverse-surface": "#f9f9f9",
+                    "error-container": "#b92902",
+                    "tertiary-fixed-dim": "#d2e45c",
+                    "on-tertiary": "#586300",
+                    "on-primary-fixed": "#423500",
+                    "secondary-fixed-dim": "#e8d741",
+                    "surface-tint": "#ffe07f",
+                    "on-secondary": "#5b5300",
+                    "tertiary": "#f1ff95",
+                    "primary-fixed-dim": "#edc200",
+                    "primary-dim": "#edc200",
+                    "on-error-container": "#ffd2c8",
+                    "surface-dim": "#0e0e0e",
+                    "secondary-dim": "#e8d741",
+                    "on-error": "#450900"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0e0e0e; color: white; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { backdrop-filter: blur(20px); background: rgba(38, 38, 38, 0.6); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_0_40px_rgba(255,210,23,0.04)]">
+<div class="flex justify-between items-center px-8 h-20 w-full max-w-[1440px] mx-auto font-['Inter'] tracking-tight">
+<div class="text-2xl font-black tracking-tighter text-white uppercase">emelSwap</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-white/60 font-medium hover:text-white transition-colors" href="#">Swap</a>
+<a class="text-[#FFD217] font-bold border-b-2 border-[#FFD217] pb-1" href="#">Pools</a>
+<a class="text-white/60 font-medium hover:text-white transition-colors" href="#">Stake</a>
+<a class="text-white/60 font-medium hover:text-white transition-colors" href="#">Governance</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-white/60 hover:bg-[#1f1f1f] rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined">history</span>
+</button>
+<button class="p-2 text-white/60 hover:bg-[#1f1f1f] rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="bg-primary-container text-on-primary-container font-bold px-6 py-2.5 rounded-full active:scale-95 transition-transform">
+                    Connect Wallet
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-24 px-4 max-w-[1200px] mx-auto flex flex-col items-center">
+<!-- Header Section -->
+<header class="text-center mb-16">
+<h1 class="text-6xl font-black tracking-tighter mb-4 text-white">Create Pool</h1>
+<p class="text-on-surface-variant max-w-lg mx-auto text-lg leading-relaxed">Deploy a new liquidity position with precision. The Midnight Monolith protocol ensures optimal tick spacing and fee management.</p>
+</header>
+<!-- Monolith Swap Module -->
+<div class="w-full max-w-2xl bg-surface-container-highest rounded-lg p-8 shadow-2xl shadow-black">
+<!-- Currency Selection -->
+<div class="space-y-6 mb-10">
+<h2 class="text-xs uppercase tracking-[0.2em] font-bold text-[#FFD217]">1. Select Pair</h2>
+<!-- Currency 0 -->
+<div class="bg-surface-container-low rounded-full p-4 flex items-center justify-between group hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center border border-white/5 overflow-hidden">
+<img alt="ETH Logo" class="w-8 h-8" data-alt="vibrant blue and white ethereum logo icon on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyBJ6dx7vT1mg_3drQL618CK-nMcqkKxYPp-1N2I7uwNGV3uvZOVwXlGDu9v6MGompNZXWxHw28gmD_mcA2BeC0awPYkVTzTH3h0VlogihrtXJsMr0cjZvBV1HoLs9e8bLXS3FPvTXDlsDl_RWX_A9ZToGYN04uJcupPdlBE18zEnZ8Fc1zZsaQ29omi_Q_YQ4Pqy7q3-r-H0uwOqkrt3ik6SaFWT69EJDDJh0BgnTdcj4-auksNElW64AQtZo8VMyusWVngYicnHE"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-lg">WETH</span>
+<span class="material-symbols-outlined text-sm text-white/20">expand_more</span>
+</div>
+<div class="flex items-center gap-2 font-mono text-[10px] text-white/30">
+                                0xC02...6Cc2
+                                <button class="hover:text-[#FFD217] transition-colors"><span class="material-symbols-outlined text-[14px]">content_copy</span></button>
+</div>
+</div>
+</div>
+<div class="pr-4">
+<input class="bg-transparent border-none focus:ring-0 text-right text-2xl font-bold w-32 placeholder:text-white/10" placeholder="0.0" type="text"/>
+</div>
+</div>
+<!-- Currency 1 -->
+<div class="bg-surface-container-low rounded-full p-4 flex items-center justify-between group hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center border border-white/5 overflow-hidden">
+<img alt="USDC Logo" class="w-8 h-8" data-alt="clean blue usdc currency icon logo on minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx7m-dmGaq7hvHvAYJmL_nvN6bD9jtU1NrXD7JvhkQfA8vJ1WChCSt4dHrY-tx5Fb3JomAnduBlHIKCyokP9tGf74CdGnwa9D6zKeZKDxTX08l7SULaLGOgXTEvkcoBE8f32rS-vZ1S1fSQJQLu9iswJLeUBsshMHOhNecr3h4gueSSXF49CzROVR9uJV4ET6Vvp2SAJ4KBoMtSa1BoEuU4w6bKHQ2fyiqnn-Xwa8CbwdNvsZG0wprelHL6pMWDLGCW09rvxzMjjLA"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-lg">USDC</span>
+<span class="material-symbols-outlined text-sm text-white/20">expand_more</span>
+</div>
+<div class="flex items-center gap-2 font-mono text-[10px] text-white/30">
+                                0xA0b...eB48
+                                <button class="hover:text-[#FFD217] transition-colors"><span class="material-symbols-outlined text-[14px]">content_copy</span></button>
+</div>
+</div>
+</div>
+<div class="pr-4">
+<input class="bg-transparent border-none focus:ring-0 text-right text-2xl font-bold w-32 placeholder:text-white/10" placeholder="0.0" type="text"/>
+</div>
+</div>
+</div>
+<!-- Fee Tier Section -->
+<div class="mb-10">
+<div class="flex justify-between items-end mb-4">
+<h2 class="text-xs uppercase tracking-[0.2em] font-bold text-[#FFD217]">2. Fee Tier</h2>
+<span class="text-[10px] text-white/40 font-mono">TICK SPACING: 10</span>
+</div>
+<div class="grid grid-cols-4 gap-3">
+<button class="bg-surface-container-low border border-white/5 rounded-2xl p-4 text-center hover:bg-surface-container-high transition-all active:scale-95 group">
+<div class="text-lg font-bold group-hover:text-[#FFD217]">0.01%</div>
+<div class="text-[9px] text-white/40 font-bold uppercase mt-1">Stable</div>
+</button>
+<button class="bg-[#131313] border-2 border-[#FFD217] rounded-2xl p-4 text-center ring-4 ring-[#FFD217]/10 transition-all group">
+<div class="text-lg font-bold text-[#FFD217]">0.05%</div>
+<div class="text-[9px] text-[#FFD217]/60 font-bold uppercase mt-1">Popular</div>
+</button>
+<button class="bg-surface-container-low border border-white/5 rounded-2xl p-4 text-center hover:bg-surface-container-high transition-all active:scale-95 group">
+<div class="text-lg font-bold group-hover:text-[#FFD217]">0.3%</div>
+<div class="text-[9px] text-white/40 font-bold uppercase mt-1">Standard</div>
+</button>
+<button class="bg-surface-container-low border border-white/5 rounded-2xl p-4 text-center hover:bg-surface-container-high transition-all active:scale-95 group">
+<div class="text-lg font-bold group-hover:text-[#FFD217]">1%</div>
+<div class="text-[9px] text-white/40 font-bold uppercase mt-1">Exotic</div>
+</button>
+</div>
+</div>
+<!-- Starting Price Selection -->
+<div class="mb-10">
+<h2 class="text-xs uppercase tracking-[0.2em] font-bold text-[#FFD217] mb-4">3. Starting Price</h2>
+<div class="bg-surface-container-low rounded-2xl p-6">
+<div class="flex items-center justify-between mb-8">
+<div>
+<div class="text-3xl font-black tracking-tight">2,540.12</div>
+<div class="text-[10px] text-white/40 font-bold tracking-widest mt-1 uppercase">USDC per WETH</div>
+</div>
+<div class="h-10 w-[1px] bg-white/10"></div>
+<div class="text-right">
+<div class="text-3xl font-black tracking-tight text-white/20">0.00039</div>
+<div class="text-[10px] text-white/40 font-bold tracking-widest mt-1 uppercase">WETH per USDC</div>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="py-2 px-3 rounded-full bg-surface-container-highest border border-white/10 text-[10px] font-bold hover:border-[#FFD217] transition-colors">1:1</button>
+<button class="py-2 px-3 rounded-full bg-surface-container-highest border border-white/10 text-[10px] font-bold hover:border-[#FFD217] transition-colors">2:1</button>
+<button class="py-2 px-3 rounded-full bg-surface-container-highest border border-white/10 text-[10px] font-bold hover:border-[#FFD217] transition-colors">1:2</button>
+<button class="py-2 px-3 rounded-full bg-[#FFD217] text-[#0e0e0e] text-[10px] font-bold">CUSTOM</button>
+</div>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary-container text-on-primary-container py-6 rounded-full text-xl font-black uppercase tracking-widest shadow-[0_20px_40px_rgba(255,210,23,0.1)] hover:shadow-[0_20px_50px_rgba(255,210,23,0.2)] transition-all active:scale-[0.98]">
+                Initialize Pool
+            </button>
+<p class="text-center text-[10px] text-white/30 uppercase tracking-[0.3em] mt-6">By continuing you agree to the protocol terms</p>
+</div>
+<!-- Secondary Info Cards (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mt-24 max-w-[1000px]">
+<div class="bg-surface-container-low p-8 rounded-lg border border-white/5">
+<span class="material-symbols-outlined text-[#FFD217] mb-4">analytics</span>
+<h3 class="text-lg font-bold mb-2">Impermanent Loss</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Advanced protection algorithms to minimize directional exposure on volatile pairs.</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg border border-white/5">
+<span class="material-symbols-outlined text-[#FFD217] mb-4">bolt</span>
+<h3 class="text-lg font-bold mb-2">Gas Optimized</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">EmelSwap's V3 architecture reduces deployment costs by up to 45% compared to peers.</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg border border-white/5">
+<span class="material-symbols-outlined text-[#FFD217] mb-4">security</span>
+<h3 class="text-lg font-bold mb-2">Multi-Audit</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">The factory contracts have been audited by OpenZeppelin and ConsenSys Diligence.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<div class="fixed bottom-0 w-full flex justify-center pb-8 z-50 md:hidden">
+<div class="bg-[#131313]/80 backdrop-blur-xl w-[90%] max-w-md rounded-full border border-white/5 flex justify-between items-center px-6 py-2 shadow-2xl shadow-black">
+<div class="flex flex-col items-center justify-center text-white/40 px-4 py-2 hover:text-white transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Trade</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#FFD217] text-[#0e0e0e] rounded-full px-6 py-2 scale-110 active:scale-90 duration-200">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Earn</span>
+</div>
+<div class="flex flex-col items-center justify-center text-white/40 px-4 py-2 hover:text-white transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">how_to_vote</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Vote</span>
+</div>
+<div class="flex flex-col items-center justify-center text-white/40 px-4 py-2 hover:text-white transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Wallet</span>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add Liquidity | emelSwap</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#262626",
+                        "surface-container-lowest": "#000000",
+                        "surface-container-low": "#131313",
+                        "on-primary-fixed-variant": "#645000",
+                        "inverse-primary": "#735d00",
+                        "primary-fixed": "#fdd013",
+                        "tertiary-dim": "#d2e45c",
+                        "surface-container": "#191919",
+                        "surface-bright": "#2c2c2c",
+                        "surface": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#5a6500",
+                        "tertiary-fixed": "#e0f368",
+                        "secondary": "#f7e54f",
+                        "on-tertiary-container": "#505a00",
+                        "outline": "#757575",
+                        "on-surface": "#ffffff",
+                        "error-dim": "#d53d18",
+                        "primary-container": "#fdd013",
+                        "on-primary-container": "#594700",
+                        "on-secondary-fixed": "#474000",
+                        "background": "#0e0e0e",
+                        "surface-container-high": "#1f1f1f",
+                        "on-tertiary-fixed": "#3f4700",
+                        "on-secondary-container": "#fff8da",
+                        "outline-variant": "#484848",
+                        "surface-container-highest": "#262626",
+                        "error": "#ff7351",
+                        "tertiary-container": "#e0f368",
+                        "on-secondary-fixed-variant": "#665c00",
+                        "inverse-on-surface": "#555555",
+                        "on-primary": "#635000",
+                        "on-background": "#ffffff",
+                        "on-surface-variant": "#ababab",
+                        "primary": "#ffe07f",
+                        "secondary-fixed": "#f7e54f",
+                        "secondary-container": "#695f00",
+                        "inverse-surface": "#f9f9f9",
+                        "error-container": "#b92902",
+                        "tertiary-fixed-dim": "#d2e45c",
+                        "on-tertiary": "#586300",
+                        "on-primary-fixed": "#423500",
+                        "secondary-fixed-dim": "#e8d741",
+                        "surface-tint": "#ffe07f",
+                        "on-secondary": "#5b5300",
+                        "tertiary": "#f1ff95",
+                        "primary-fixed-dim": "#edc200",
+                        "primary-dim": "#edc200",
+                        "on-error-container": "#ffd2c8",
+                        "surface-dim": "#0e0e0e",
+                        "secondary-dim": "#e8d741",
+                        "on-error": "#450900"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0e0e0e;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gold-glow {
+            box-shadow: 0 0 40px rgba(255, 210, 23, 0.04);
+        }
+        .chart-gradient {
+            background: linear-gradient(180deg, rgba(255, 210, 23, 0.15) 0%, rgba(255, 210, 23, 0) 100%);
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_0_40px_rgba(255,210,23,0.04)] h-20">
+<div class="flex justify-between items-center px-8 h-full w-full max-w-[1440px] mx-auto font-['Inter'] tracking-tight">
+<div class="text-2xl font-black tracking-tighter text-white uppercase">emelSwap</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-white/60 font-medium hover:text-white transition-colors" href="#">Swap</a>
+<a class="text-[#FFD217] font-bold border-b-2 border-[#FFD217] pb-1" href="#">Pools</a>
+<a class="text-white/60 font-medium hover:text-white transition-colors" href="#">Stake</a>
+<a class="text-white/60 font-medium hover:text-white transition-colors" href="#">Governance</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-white/60 hover:bg-[#1f1f1f] rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined">history</span>
+</button>
+<button class="p-2 text-white/60 hover:bg-[#1f1f1f] rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-bold hover:bg-[#ffe07f] transition-all active:scale-95">
+                    Connect Wallet
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-32 px-4 flex flex-col items-center">
+<!-- Breadcrumb / Header -->
+<header class="w-full max-w-4xl mb-12 flex flex-col items-center text-center">
+<div class="flex items-center gap-2 text-on-surface-variant mb-4 uppercase tracking-[0.2em] text-[10px] font-bold">
+<span class="material-symbols-outlined text-sm">water_drop</span>
+                Liquidity Provision
+            </div>
+<h1 class="text-5xl md:text-6xl font-black tracking-tighter mb-4">Add Liquidity</h1>
+<p class="text-on-surface-variant max-w-md">Provide concentrated liquidity to the emelSwap AMM and earn protocol fees on every trade.</p>
+</header>
+<div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Step 1: Pair Selection & Tier (Left Column) -->
+<section class="lg:col-span-5 space-y-6">
+<!-- Pair Selection Plate -->
+<div class="bg-surface-container-low rounded-lg p-8 space-y-6">
+<h2 class="text-xs uppercase tracking-widest font-bold text-primary opacity-80">01. Select Pair</h2>
+<div class="space-y-4">
+<!-- Token 1 -->
+<div class="bg-surface-container-high rounded-full p-4 flex items-center justify-between border border-white/5 hover:border-white/10 transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+<img alt="Ethereum" class="w-6 h-6" data-alt="Stylized ethereum logo icon on white circle background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMKiyh_EpC5kISKpWxaPoMOY0SwPB_FHINmRVJDd6468tDx8b-4N4OyCixy2lhQfY4FwaN2mZz4t41-AlxIa1mBLr4e6lindKPpHJlWU2Vq4WObtpCZvlCX8Zxn7pWzHJVlHTa03mXQ8MLTQUziLK-JCK2kDx_rcsXQVFmuQDEiGaySxh5YhJ4m6mR37aYK8yEtLWZfWlhh14P-BJ8cqNaOzQ54cMV1g_DybE9aFWTzYJor-IgAghYScs0E_822bA1VJ42bowEHft6"/>
+</div>
+<div>
+<div class="text-sm font-bold text-white uppercase">ETH</div>
+<div class="text-[10px] text-on-surface-variant uppercase">Ethereum</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-white">expand_more</span>
+</div>
+<!-- Token 2 -->
+<div class="bg-surface-container-high rounded-full p-4 flex items-center justify-between border border-white/5 hover:border-white/10 transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+<img alt="USDT" class="w-6 h-6" data-alt="Stylized tether logo icon on gold circle background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4eH_CWr5ztOOiNWf3qazbjVWQDUa5toZSP9QzzW4b926-5JvJvT4rAkQ9997B_S2atpIowDGaT4gKPDeF4AtpSqcw0LjbQfYK3nxt1Xlb-9EAWg6spFwJs0J2_VCHWXWD56R1SyKltNT7n6Vcz_XHl3kx52bbqCbg_pDUC1_Ja2OaEvM_vKDIZaHuaobDBy0OPxbOObvjJZDIDkoJar04g7QVtOsxbYiEy9y5rX_HjBip0Jm5CQhMPlt1i3Xo5t0-UnPjnJlPxt4a"/>
+</div>
+<div>
+<div class="text-sm font-bold text-white uppercase">USDT</div>
+<div class="text-[10px] text-on-surface-variant uppercase">Tether USD</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-white">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Fee Tier Plate -->
+<div class="bg-surface-container-low rounded-lg p-8 space-y-6">
+<h2 class="text-xs uppercase tracking-widest font-bold text-primary opacity-80">02. Select Fee Tier</h2>
+<div class="grid grid-cols-2 gap-3">
+<button class="bg-surface-container-high hover:bg-surface-variant p-4 rounded-xl border border-white/5 text-left transition-all active:scale-[0.98]">
+<div class="text-xs font-bold text-white">0.01%</div>
+<div class="text-[9px] text-on-surface-variant uppercase mt-1">Best for stable</div>
+</button>
+<button class="bg-surface-container-highest border-2 border-primary p-4 rounded-xl text-left transition-all relative overflow-hidden group">
+<div class="text-xs font-bold text-primary">0.05%</div>
+<div class="text-[9px] text-primary/70 uppercase mt-1">Most popular</div>
+<div class="absolute -right-2 -bottom-2 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-4xl">verified</span>
+</div>
+</button>
+<button class="bg-surface-container-high hover:bg-surface-variant p-4 rounded-xl border border-white/5 text-left transition-all active:scale-[0.98]">
+<div class="text-xs font-bold text-white">0.3%</div>
+<div class="text-[9px] text-on-surface-variant uppercase mt-1">Best for exotic</div>
+</button>
+<button class="bg-surface-container-high hover:bg-surface-variant p-4 rounded-xl border border-white/5 text-left transition-all active:scale-[0.98]">
+<div class="text-xs font-bold text-white">1%</div>
+<div class="text-[9px] text-on-surface-variant uppercase mt-1">High volatility</div>
+</button>
+</div>
+</div>
+</section>
+<!-- Step 2: Price Range & Chart (Right Column) -->
+<section class="lg:col-span-7 space-y-6">
+<div class="bg-surface-container-low rounded-lg p-8 space-y-8 h-full flex flex-col">
+<div class="flex justify-between items-start">
+<h2 class="text-xs uppercase tracking-widest font-bold text-primary opacity-80">03. Set Price Range</h2>
+<div class="bg-surface-container-highest px-3 py-1 rounded-full text-[10px] font-bold text-on-surface-variant">
+                            Current Price: <span class="text-white">2,420.55 USDT per ETH</span>
+</div>
+</div>
+<!-- Chart Mockup -->
+<div class="flex-grow min-h-[300px] relative flex flex-col justify-end gap-2 px-4 group">
+<div class="absolute inset-0 flex items-end justify-between gap-1 h-[200px]">
+<!-- Mock Histogram Bars -->
+<div class="flex-1 bg-surface-container-highest h-[40%] rounded-t-sm opacity-20"></div>
+<div class="flex-1 bg-surface-container-highest h-[60%] rounded-t-sm opacity-20"></div>
+<div class="flex-1 bg-surface-container-highest h-[85%] rounded-t-sm opacity-40"></div>
+<div class="flex-1 bg-primary/20 chart-gradient h-[95%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 chart-gradient h-[100%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 chart-gradient h-[90%] rounded-t-sm"></div>
+<div class="flex-1 bg-surface-container-highest h-[55%] rounded-t-sm opacity-30"></div>
+<div class="flex-1 bg-surface-container-highest h-[30%] rounded-t-sm opacity-10"></div>
+<div class="flex-1 bg-surface-container-highest h-[15%] rounded-t-sm opacity-5"></div>
+</div>
+<!-- Price Ticks -->
+<div class="flex justify-between text-[10px] text-on-surface-variant font-mono border-t border-white/10 pt-2">
+<span>1,800</span>
+<span>2,100</span>
+<span class="text-primary font-bold">2,420.55</span>
+<span>2,800</span>
+<span>3,200</span>
+</div>
+<!-- Range Handles (Visual UI Elements) -->
+<div class="absolute inset-0 flex items-center justify-between px-[15%] pointer-events-none">
+<div class="h-full w-px bg-primary relative pointer-events-auto cursor-ew-resize">
+<div class="absolute -top-2 left-1/2 -translate-x-1/2 bg-primary text-on-primary-container px-2 py-0.5 rounded-sm text-[8px] font-black uppercase">Min</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-8 bg-primary rounded-full shadow-lg shadow-primary/20 flex items-center justify-center">
+<div class="w-0.5 h-3 bg-on-primary-container/40 rounded-full"></div>
+</div>
+</div>
+<div class="h-full w-px bg-primary relative pointer-events-auto cursor-ew-resize">
+<div class="absolute -top-2 left-1/2 -translate-x-1/2 bg-primary text-on-primary-container px-2 py-0.5 rounded-sm text-[8px] font-black uppercase">Max</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-8 bg-primary rounded-full shadow-lg shadow-primary/20 flex items-center justify-center">
+<div class="w-0.5 h-3 bg-on-primary-container/40 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Strategies -->
+<div class="flex flex-wrap gap-2">
+<button class="flex-1 bg-surface-container-high hover:bg-surface-variant py-2 px-4 rounded-full text-[10px] font-black uppercase tracking-widest text-white/60 hover:text-white transition-all">Stable</button>
+<button class="flex-1 bg-primary text-on-primary-container py-2 px-4 rounded-full text-[10px] font-black uppercase tracking-widest transition-all">Wide</button>
+<button class="flex-1 bg-surface-container-high hover:bg-surface-variant py-2 px-4 rounded-full text-[10px] font-black uppercase tracking-widest text-white/60 hover:text-white transition-all">One-sided</button>
+</div>
+<!-- Inputs -->
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest pl-1">Min Price</label>
+<div class="bg-surface-container-high rounded-lg p-4 flex items-center justify-between border-b-2 border-primary">
+<button class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center hover:bg-surface-bright text-white"><span class="material-symbols-outlined text-sm">remove</span></button>
+<div class="flex flex-col items-center">
+<span class="text-xl font-bold">2,150.00</span>
+<span class="text-[9px] text-on-surface-variant">USDT per ETH</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center hover:bg-surface-bright text-white"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest pl-1">Max Price</label>
+<div class="bg-surface-container-high rounded-lg p-4 flex items-center justify-between border-b-2 border-primary">
+<button class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center hover:bg-surface-bright text-white"><span class="material-symbols-outlined text-sm">remove</span></button>
+<div class="flex flex-col items-center">
+<span class="text-xl font-bold">2,950.00</span>
+<span class="text-[9px] text-on-surface-variant">USDT per ETH</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center hover:bg-surface-bright text-white"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Sticky Bottom Summary Bar -->
+<div class="fixed bottom-24 md:bottom-12 w-full max-w-4xl px-4 z-40">
+<div class="bg-surface-container-high/60 backdrop-blur-2xl rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 gold-glow border border-white/5">
+<div class="flex gap-8">
+<div class="flex flex-col">
+<span class="text-[9px] font-black uppercase tracking-widest text-on-surface-variant">Est. APR</span>
+<span class="text-2xl font-black text-primary">12.4%</span>
+</div>
+<div class="flex flex-col border-l border-white/10 pl-8">
+<span class="text-[9px] font-black uppercase tracking-widest text-on-surface-variant">Min Invest</span>
+<span class="text-2xl font-black text-white">$450.00</span>
+</div>
+</div>
+<div class="flex items-center gap-4 w-full md:w-auto">
+<button class="flex-grow md:flex-none bg-surface-container-highest text-white px-8 py-4 rounded-full font-bold hover:bg-surface-bright transition-all active:scale-95">
+                        Back to Pools
+                    </button>
+<button class="flex-grow md:flex-none bg-primary-container text-on-primary-container px-12 py-4 rounded-full font-black uppercase tracking-tighter text-lg hover:bg-[#ffe07f] transition-all active:scale-95 shadow-lg shadow-primary/20">
+                        Supply Assets
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full flex justify-center pb-8 z-50 md:hidden">
+<div class="w-[90%] max-w-md rounded-full bg-[#131313]/80 backdrop-blur-xl border border-white/5 shadow-2xl shadow-black flex justify-between items-center p-2">
+<a class="flex flex-col items-center justify-center text-white/40 px-4 py-2 hover:text-white transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Trade</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#FFD217] text-[#0e0e0e] rounded-full px-6 py-2 scale-110 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Earn</span>
+</a>
+<a class="flex flex-col items-center justify-center text-white/40 px-4 py-2 hover:text-white transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">how_to_vote</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Vote</span>
+</a>
+<a class="flex flex-col items-center justify-center text-white/40 px-4 py-2 hover:text-white transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Wallet</span>
+</a>
+</div>
+</nav>
+<!-- Visual Polish: Background Orbs -->
+<div class="fixed top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[150px] -z-10 rounded-full"></div>
+<div class="fixed bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] -z-10 rounded-full"></div>
+</body></html>

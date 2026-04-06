@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction History | emelSwap</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0e0e0e;
+            color: #ffffff;
+        }
+        .glass-panel {
+            background: rgba(19, 19, 19, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .table-row-hover:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+        .dropdown-shadow {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0e0e0e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2c2c2c;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#262626",
+                        "surface-container-lowest": "#000000",
+                        "surface-container-low": "#131313",
+                        "on-primary-fixed-variant": "#645000",
+                        "inverse-primary": "#735d00",
+                        "primary-fixed": "#fdd013",
+                        "tertiary-dim": "#d2e45c",
+                        "surface-container": "#191919",
+                        "surface-bright": "#2c2c2c",
+                        "surface": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#5a6500",
+                        "tertiary-fixed": "#e0f368",
+                        "secondary": "#f7e54f",
+                        "on-tertiary-container": "#505a00",
+                        "outline": "#757575",
+                        "on-surface": "#ffffff",
+                        "error-dim": "#d53d18",
+                        "primary-container": "#fdd013",
+                        "on-primary-container": "#594700",
+                        "on-secondary-fixed": "#474000",
+                        "background": "#0e0e0e",
+                        "surface-container-high": "#1f1f1f",
+                        "on-tertiary-fixed": "#3f4700",
+                        "on-secondary-container": "#fff8da",
+                        "outline-variant": "#484848",
+                        "surface-container-highest": "#262626",
+                        "error": "#ff7351",
+                        "tertiary-container": "#e0f368",
+                        "on-secondary-fixed-variant": "#665c00",
+                        "inverse-on-surface": "#555555",
+                        "on-primary": "#635000",
+                        "on-background": "#ffffff",
+                        "on-surface-variant": "#ababab",
+                        "primary": "#FFD217",
+                        "secondary-fixed": "#f7e54f",
+                        "secondary-container": "#695f00",
+                        "inverse-surface": "#f9f9f9",
+                        "error-container": "#b92902",
+                        "tertiary-fixed-dim": "#d2e45c",
+                        "on-tertiary": "#586300",
+                        "on-primary-fixed": "#423500",
+                        "secondary-fixed-dim": "#e8d741",
+                        "surface-tint": "#ffe07f",
+                        "on-secondary": "#5b5300",
+                        "tertiary": "#f1ff95",
+                        "primary-fixed-dim": "#edc200",
+                        "primary-dim": "#edc200",
+                        "on-error-container": "#ffd2c8",
+                        "surface-dim": "#0e0e0e",
+                        "secondary-dim": "#e8d741",
+                        "on-error": "#450900"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Top Navigation (Ref: {{DATA:COMPONENTS:COMPONENTS_30}}) -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e] shadow-[0_0_40px_rgba(255,210,23,0.04)] border-b border-white/5">
+<div class="flex justify-between items-center px-8 h-20 w-full max-w-[1440px] mx-auto">
+<div class="flex items-center gap-12">
+<div class="text-2xl font-black tracking-tighter text-white uppercase font-['Inter']">emelSwap</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-white/60 font-medium hover:text-white transition-colors" href="#">Swap</a>
+<a class="text-white/60 font-medium hover:text-white transition-colors" href="#">Pools</a>
+<a class="text-white/60 font-medium hover:text-white transition-colors" href="#">Stake</a>
+<a class="text-white/60 font-medium hover:text-white transition-colors" href="#">Governance</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-white/60 hover:text-white hover:bg-[#1f1f1f] p-2 rounded-full transition-all duration-300">history</button>
+<button class="material-symbols-outlined text-white/60 hover:text-white hover:bg-[#1f1f1f] p-2 rounded-full transition-all duration-300">settings</button>
+<button class="bg-[#FFD217] text-[#0e0e0e] px-6 py-2 rounded-full font-bold active:scale-95 transition-transform">Connect Wallet</button>
+</div>
+</div>
+</header>
+<div class="pt-28 pb-20 px-6 max-w-[1200px] mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+<div>
+<h1 class="text-5xl font-black tracking-tighter mb-3 uppercase italic">Activity <span class="text-primary font-light not-italic">Vault</span></h1>
+<p class="text-white/50 text-lg max-w-2xl font-medium">Detailed log of your on-chain movements across the emelSwap liquidity network.</p>
+</div>
+<button class="bg-[#FFD217] text-[#0e0e0e] px-8 py-3 rounded-full font-black flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined font-bold">download</span>
+            EXPORT CSV
+        </button>
+</div>
+<!-- Tabs -->
+<div class="flex gap-10 border-b border-white/10 mb-10">
+<button class="pb-5 text-white/40 font-black uppercase tracking-widest text-xs hover:text-white transition-colors">Tokens</button>
+<button class="pb-5 text-primary border-b-2 border-primary font-black uppercase tracking-widest text-xs flex items-center gap-3">
+            Activity 
+            <span class="bg-primary text-black text-[10px] px-2 py-0.5 rounded-full font-black">24</span>
+</button>
+</div>
+<!-- Filters Row -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10 bg-[#131313] p-6 rounded-2xl border border-white/5">
+<div class="flex flex-wrap items-center gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Filter by type</label>
+<div class="relative group">
+<button class="flex items-center justify-between gap-10 bg-black border border-primary/50 px-5 py-3 rounded-xl text-sm font-bold transition-all min-w-[220px] text-white">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">expand_less</span>
+                            All types
+                        </div>
+<span class="material-symbols-outlined text-white/40 group-hover:text-primary transition-colors">expand_less</span>
+</button>
+<!-- Expanded Dropdown -->
+<div class="visible opacity-100 absolute top-full left-0 mt-2 w-full bg-black border border-primary/30 rounded-xl dropdown-shadow z-20 py-2 transition-all duration-200 overflow-hidden">
+<a class="block px-5 py-3 text-sm font-bold text-primary bg-primary/10 border-l-2 border-primary" href="#">All types</a>
+<a class="block px-5 py-3 text-sm font-bold text-white/70 hover:bg-white/5 hover:text-white transition-colors" href="#">Swaps</a>
+<a class="block px-5 py-3 text-sm font-bold text-white/70 hover:bg-white/5 hover:text-white transition-colors" href="#">Approvals</a>
+<a class="block px-5 py-3 text-sm font-bold text-white/70 hover:bg-white/5 hover:text-white transition-colors" href="#">Pool Created</a>
+<a class="block px-5 py-3 text-sm font-bold text-white/70 hover:bg-white/5 hover:text-white transition-colors" href="#">Added Liquidity</a>
+<a class="block px-5 py-3 text-sm font-bold text-white/70 hover:bg-white/5 hover:text-white transition-colors" href="#">Removed Liquidity</a>
+<a class="block px-5 py-3 text-sm font-bold text-white/70 hover:bg-white/5 hover:text-white transition-colors" href="#">Claimed Fees</a>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 w-full md:w-auto">
+<label class="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Time Range</label>
+<div class="flex bg-black/40 rounded-xl p-1.5 border border-white/10">
+<button class="flex-1 md:px-6 py-2 text-[10px] font-black uppercase tracking-widest text-white/40 hover:text-white rounded-lg transition-all">24h</button>
+<button class="flex-1 md:px-6 py-2 text-[10px] font-black uppercase tracking-widest text-white/40 hover:text-white rounded-lg transition-all">7d</button>
+<button class="flex-1 md:px-6 py-2 text-[10px] font-black uppercase tracking-widest text-white/40 hover:text-white rounded-lg transition-all">30d</button>
+<button class="flex-1 md:px-6 py-2 text-[10px] font-black uppercase tracking-widest bg-primary text-black rounded-lg shadow-lg">All time</button>
+</div>
+</div>
+</div>
+<!-- Transaction List Table -->
+<div class="bg-[#131313] rounded-3xl border border-white/5 overflow-hidden shadow-2xl">
+<div class="grid grid-cols-[1.8fr_1.2fr_1fr_1fr_0.5fr] gap-4 px-8 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-white/30 border-b border-white/5 bg-white/[0.02]">
+<div>Transaction</div>
+<div>Amount</div>
+<div>Status</div>
+<div>Time</div>
+<div class="text-right">Action</div>
+</div>
+<div class="divide-y divide-white/5">
+<!-- Transaction Item 1 -->
+<div class="grid grid-cols-[1.8fr_1.2fr_1fr_1fr_0.5fr] gap-4 px-8 py-7 items-center table-row-hover transition-all group">
+<div class="flex items-center gap-5">
+<div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">swap_horiz</span>
+</div>
+<div>
+<h4 class="font-bold text-sm text-white group-hover:text-primary transition-colors">Swap ETH to USDT</h4>
+<div class="flex items-center gap-2 mt-1">
+<p class="text-[10px] text-white/40 font-black uppercase tracking-tighter">Uniswap V3</p>
+<span class="w-1 h-1 rounded-full bg-white/20"></span>
+<span class="text-[9px] text-white/30 font-bold">ID: 0x4f...92a</span>
+</div>
+</div>
+</div>
+<div>
+<p class="font-black text-sm text-white">-1.20 ETH</p>
+<p class="text-[10px] text-green-500 font-black tracking-tight mt-0.5">+2,842.12 USDT</p>
+</div>
+<div>
+<span class="inline-flex items-center gap-2 bg-green-500/10 text-green-500 px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest border border-green-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                        Confirmed
+                    </span>
+</div>
+<div class="text-[11px] text-white/50 font-bold uppercase tracking-tight">2 mins ago</div>
+<div class="text-right">
+<button class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-lg">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Transaction Item 2 -->
+<div class="grid grid-cols-[1.8fr_1.2fr_1fr_1fr_0.5fr] gap-4 px-8 py-7 items-center table-row-hover transition-all group">
+<div class="flex items-center gap-5">
+<div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">add_box</span>
+</div>
+<div>
+<h4 class="font-bold text-sm text-white group-hover:text-primary transition-colors">Add Liquidity</h4>
+<div class="flex items-center gap-2 mt-1">
+<p class="text-[10px] text-white/40 font-black uppercase tracking-tighter">Zama Protocol</p>
+<span class="bg-white/5 text-[9px] font-black px-2 py-0.5 rounded-lg tracking-tighter text-white/40 uppercase">Added Liquidity</span>
+</div>
+</div>
+</div>
+<div>
+<p class="font-black text-sm text-white">0.5 ETH / 1,200 USDC</p>
+<p class="text-[10px] text-primary font-black tracking-tight mt-0.5 uppercase">LP Token Minted</p>
+</div>
+<div>
+<span class="inline-flex items-center gap-2 bg-green-500/10 text-green-500 px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest border border-green-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                        Confirmed
+                    </span>
+</div>
+<div class="text-[11px] text-white/50 font-bold uppercase tracking-tight">12 mins ago</div>
+<div class="text-right">
+<button class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-lg">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Transaction Item 3 -->
+<div class="grid grid-cols-[1.8fr_1.2fr_1fr_1fr_0.5fr] gap-4 px-8 py-7 items-center table-row-hover transition-all group">
+<div class="flex items-center gap-5">
+<div class="w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<h4 class="font-bold text-sm text-white group-hover:text-primary transition-colors">Claim Rewards</h4>
+<div class="flex items-center gap-2 mt-1">
+<p class="text-[10px] text-white/40 font-black uppercase tracking-tighter">Staking Vault</p>
+<span class="bg-white/5 text-[9px] font-black px-2 py-0.5 rounded-lg tracking-tighter text-white/40 uppercase">Claimed Fees</span>
+</div>
+</div>
+</div>
+<div>
+<p class="font-black text-sm text-green-500">+142.50 ZAMA</p>
+</div>
+<div>
+<span class="inline-flex items-center gap-2 bg-green-500/10 text-green-500 px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest border border-green-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                        Confirmed
+                    </span>
+</div>
+<div class="text-[11px] text-white/50 font-bold uppercase tracking-tight">4 hours ago</div>
+<div class="text-right">
+<button class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-lg">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Transaction Item 4 (Pending) -->
+<div class="grid grid-cols-[1.8fr_1.2fr_1fr_1fr_0.5fr] gap-4 px-8 py-7 items-center table-row-hover transition-all group">
+<div class="flex items-center gap-5">
+<div class="w-12 h-12 rounded-xl bg-primary/20 border border-primary/40 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined animate-spin duration-1000">sync</span>
+</div>
+<div>
+<h4 class="font-bold text-sm text-white group-hover:text-primary transition-colors">Swap USDC to ETH</h4>
+<div class="flex items-center gap-2 mt-1">
+<p class="text-[10px] text-white/40 font-black uppercase tracking-tighter">SushiSwap</p>
+<span class="bg-primary/20 text-[9px] font-black px-2 py-0.5 rounded-lg tracking-tighter text-primary uppercase">Swap</span>
+</div>
+</div>
+</div>
+<div>
+<p class="font-black text-sm text-white">-1,500.00 USDC</p>
+<p class="text-[10px] text-white/40 font-black tracking-tight mt-0.5">Est. +0.58 ETH</p>
+</div>
+<div>
+<span class="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest border border-primary/20 shadow-[0_0_15px_rgba(255,210,23,0.1)]">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                        Pending
+                    </span>
+</div>
+<div class="text-[11px] text-primary font-black uppercase tracking-tighter italic">Processing...</div>
+<div class="text-right">
+<button class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-lg">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Transaction Item 5 -->
+<div class="grid grid-cols-[1.8fr_1.2fr_1fr_1fr_0.5fr] gap-4 px-8 py-7 items-center table-row-hover transition-all group">
+<div class="flex items-center gap-5">
+<div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">lock_open</span>
+</div>
+<div>
+<h4 class="font-bold text-sm text-white group-hover:text-primary transition-colors">Approve USDC</h4>
+<div class="flex items-center gap-2 mt-1">
+<p class="text-[10px] text-white/40 font-black uppercase tracking-tighter">1inch Network</p>
+<span class="bg-white/5 text-[9px] font-black px-2 py-0.5 rounded-lg tracking-tighter text-white/40 uppercase">Approvals</span>
+</div>
+</div>
+</div>
+<div>
+<p class="font-black text-sm text-white uppercase tracking-widest">Unlimited</p>
+</div>
+<div>
+<span class="inline-flex items-center gap-2 bg-green-500/10 text-green-500 px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest border border-green-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                        Confirmed
+                    </span>
+</div>
+<div class="text-[11px] text-white/50 font-bold uppercase tracking-tight">1 day ago</div>
+<div class="text-right">
+<button class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-lg">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-10 flex flex-col sm:flex-row justify-between items-center gap-6">
+<p class="text-xs text-white/30 font-black uppercase tracking-widest">Page 1 of 3 <span class="mx-2 opacity-20">|</span> Showing 1-10 of 24 transactions</p>
+<div class="flex gap-3">
+<button class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-black text-[10px] uppercase tracking-[0.2em] text-white/30 cursor-not-allowed">Previous</button>
+<button class="px-8 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full font-black text-[10px] uppercase tracking-[0.2em] text-primary transition-all active:scale-95 shadow-lg">Next Page</button>
+</div>
+</div>
+<!-- Risk Disclosure (From Ref Style) -->
+<div class="mt-20 p-10 bg-white/[0.02] border border-white/5 rounded-[2.5rem]">
+<h3 class="text-xl font-black mb-4 uppercase tracking-tight">Security &amp; Protocol Log</h3>
+<p class="text-white/40 text-sm leading-relaxed mb-6 font-medium">
+            All transaction history displayed is fetched directly from the emelSwap indexing nodes. 
+            On-chain data is immutable, but pending transactions may be subject to network congestion or slippage adjustments. 
+            Ensure your explorer links match the transaction hashes for verification.
+        </p>
+<button class="text-primary font-black uppercase text-[10px] tracking-[0.2em] flex items-center gap-2 hover:translate-x-1 transition-transform">
+            View security documentation <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Background Ambiance -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+<div class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-primary/5 blur-[150px]"></div>
+<div class="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-primary/3 blur-[120px]"></div>
+</div>
+</body></html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>emelSwap Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#262626",
+                        "surface-container-lowest": "#000000",
+                        "surface-container-low": "#131313",
+                        "on-primary-fixed-variant": "#645000",
+                        "inverse-primary": "#735d00",
+                        "primary-fixed": "#fdd013",
+                        "tertiary-dim": "#d2e45c",
+                        "surface-container": "#191919",
+                        "surface-bright": "#2c2c2c",
+                        "surface": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#5a6500",
+                        "tertiary-fixed": "#e0f368",
+                        "secondary": "#f7e54f",
+                        "on-tertiary-container": "#505a00",
+                        "outline": "#757575",
+                        "on-surface": "#ffffff",
+                        "error-dim": "#d53d18",
+                        "primary-container": "#fdd013",
+                        "on-primary-container": "#594700",
+                        "on-secondary-fixed": "#474000",
+                        "background": "#0e0e0e",
+                        "surface-container-high": "#1f1f1f",
+                        "on-tertiary-fixed": "#3f4700",
+                        "on-secondary-container": "#fff8da",
+                        "outline-variant": "#484848",
+                        "surface-container-highest": "#262626",
+                        "error": "#ff7351",
+                        "tertiary-container": "#e0f368",
+                        "on-secondary-fixed-variant": "#665c00",
+                        "inverse-on-surface": "#555555",
+                        "on-primary": "#635000",
+                        "on-background": "#ffffff",
+                        "on-surface-variant": "#ababab",
+                        "primary": "#ffe07f",
+                        "secondary-fixed": "#f7e54f",
+                        "secondary-container": "#695f00",
+                        "inverse-surface": "#f9f9f9",
+                        "error-container": "#b92902",
+                        "tertiary-fixed-dim": "#d2e45c",
+                        "on-tertiary": "#586300",
+                        "on-primary-fixed": "#423500",
+                        "secondary-fixed-dim": "#e8d741",
+                        "surface-tint": "#ffe07f",
+                        "on-secondary": "#5b5300",
+                        "tertiary": "#f1ff95",
+                        "primary-fixed-dim": "#edc200",
+                        "primary-dim": "#edc200",
+                        "on-error-container": "#ffd2c8",
+                        "surface-dim": "#0e0e0e",
+                        "secondary-dim": "#e8d741",
+                        "on-error": "#450900"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0e0e0e;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .radial-glow {
+            background: radial-gradient(circle at 50% -20%, rgba(255, 210, 23, 0.08) 0%, rgba(14, 14, 14, 0) 60%);
+        }
+        .glass-card {
+            background: rgba(31, 31, 31, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background selection:bg-primary-container selection:text-on-primary-container min-h-screen radial-glow">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_0_40px_rgba(255,210,23,0.04)]">
+<div class="flex justify-between items-center px-8 h-20 w-full max-w-[1440px] mx-auto font-['Inter'] tracking-tight">
+<div class="text-2xl font-black tracking-tighter text-white uppercase">
+                emelSwap
+            </div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-white/60 font-medium hover:text-white transition-colors" href="#">Swap</a>
+<a class="text-white/60 font-medium hover:text-white transition-colors" href="#">Pools</a>
+<a class="text-white/60 font-medium hover:text-white transition-colors" href="#">Stake</a>
+<a class="text-white/60 font-medium hover:text-white transition-colors" href="#">Governance</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-white/60 hover:bg-[#1f1f1f] rounded-full transition-all duration-300">
+<span class="material-symbols-outlined">history</span>
+</button>
+<button class="p-2 text-white/60 hover:bg-[#1f1f1f] rounded-full transition-all duration-300">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="bg-primary-container text-on-primary-container font-bold px-6 py-2.5 rounded-full hover:scale-105 active:scale-95 transition-all">
+                    Connect Wallet
+                </button>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-40 px-6 max-w-4xl mx-auto flex flex-col items-center">
+<!-- Hero Section -->
+<section class="w-full text-center mb-16">
+<span class="text-primary-container font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Total Portfolio Value</span>
+<h1 class="text-6xl md:text-8xl font-black tracking-tighter text-on-background mb-4">
+                $142,850.<span class="text-white/40">42</span>
+</h1>
+<div class="flex items-center justify-center gap-2 text-tertiary-dim font-medium bg-tertiary-container/10 px-4 py-1.5 rounded-full w-fit mx-auto">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="text-sm">+12.5% ($15,240.00)</span>
+</div>
+</section>
+<!-- Navigation Tabs -->
+<div class="flex gap-2 p-1 bg-surface-container-low rounded-full mb-12 shadow-inner border border-white/5">
+<button class="px-10 py-3 rounded-full bg-surface-container-high text-on-surface font-bold text-sm transition-all shadow-lg ring-1 ring-white/10">
+                Tokens
+            </button>
+<button class="px-10 py-3 rounded-full text-on-surface-variant font-medium text-sm hover:text-on-surface transition-all">
+                Activity
+            </button>
+</div>
+<!-- Token Distribution Bento (Monolith Style) -->
+<div class="w-full space-y-6">
+<!-- Asset Row 1: ETH -->
+<div class="group bg-surface-container-low hover:bg-surface-container-high p-6 rounded-lg transition-all duration-500 cursor-pointer">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-[#627eea]/20 rounded-full flex items-center justify-center p-3">
+<img alt="ETH" class="w-full h-full" data-alt="abstract geometric ethereum icon with crystalline shapes and deep blue gradients" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClYLTjMo-ECiwi1rxIYCry-M0GiEH4kWXDlAh3entO2pdN5tPzkWY_rajik19c48DLkT9cEzl40ERJ6fZ795zPp-nbGSuhplgI_gG2zeEM6zhGn6If4syR89Ar5sFHRQdCCuOPiNTgH8JzmxtzhbgcEgkIqzVBi1jJVBmxj4TCZvd_SEWAw8-wX2D04wS5s3UfTJC38p8wVqSmuaeug1kz6BFqmj9WEQjsx7pjtHm2NMxo5ZdufoPCwF1cgc5VVN7uMIbcWzFIv9It"/>
+</div>
+<div>
+<h3 class="text-xl font-bold text-on-background">Ethereum</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide">ETH</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xl font-bold text-on-background">$84,200.00</p>
+<p class="text-tertiary-dim text-sm font-bold">+4.2%</p>
+</div>
+</div>
+<!-- Allocation Progress -->
+<div class="space-y-2">
+<div class="flex justify-between items-end text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">
+<span>Allocation: 58.9%</span>
+<span>32.4 ETH</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full w-[58.9%] shadow-[0_0_15px_rgba(253,208,19,0.3)]"></div>
+</div>
+</div>
+</div>
+<!-- Asset Row 2: WBTC -->
+<div class="group bg-surface-container-low hover:bg-surface-container-high p-6 rounded-lg transition-all duration-500 cursor-pointer">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-[#f7931a]/20 rounded-full flex items-center justify-center p-3">
+<img alt="WBTC" class="w-full h-full" data-alt="vibrant orange circular icon with tech patterns representing wrapped bitcoin asset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9fS3D-HZ_-lGQ2BXSLW-iFGfMzXneWXpusuEWp-7z3SHyHuEbnch2ViRXS52mWEl4ZMkgM1pJGdwy1SMUbN-l3oDHFl8zDeb1OCfqI0u40yUnBvRHf--2uli5lSgEHgnEZamTswfIDt63FeIXnlTad5IQf9y1YZKyyfc2ONeHAhYs1akExVKqWyg6oQW8WSfmPNVDWtZk8EwV1hN3XFnV0NgFvOFKz-BdMuiYLhtQquqDuiNl_KoodMz1BFPwvqug0iaZvnuBcxIS"/>
+</div>
+<div>
+<h3 class="text-xl font-bold text-on-background">Wrapped Bitcoin</h3>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide">WBTC</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xl font-bold text-on-background">$45,300.00</p>
+<p class="text-tertiary-dim text-sm font-bold">+1.8%</p>
+</div>
+</div>
+<!-- Allocation Progress -->
+<div class="space-y-2">
+<div class="flex justify-between items-end text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">
+<span>Allocation: 31.7%</span>
+<span>0.68 WBTC</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container/80 rounded-full w-[31.7%] shadow-[0_0_15px_rgba(253,208,19,0.2)]"></div>
+</div>
+</div>
+</div>
+<!-- Asset Row 3: EMEL -->
+<div class="group bg-surface-container-low hover:bg-surface-container-high p-6 rounded-lg transition-all duration-500 cursor-pointer border border-primary-container/10">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-[#FFD217]/20 rounded-full flex items-center justify-center p-3 ring-2 ring-primary-container/20">
+<img alt="EMEL" class="w-full h-full" data-alt="glowing golden shield icon with futuristic circuitry patterns on a black background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWFpLMohjGa7qnXjSRSnntdmhqsMbsPGgdqpOGz02maqDfEPKszPIHkkpRF9VBzgw_W-wtmLNwETLRnOwd76kwHPILD7wq_hn4ltYF49-_BXC5uiyrXhXivz_gVSzLV_pPAeok81nHjf_mJDQq1ZtxE--g4FL-vZtBChiYRgdvk0R3Ock_M--Fz3dErK5rQeQTMkve8x0NonOqfFxlWxeevGv4XC7DyCb9VFhaHGTtVKY8Rnv3OdvOAAdsO2BJLotRq8mgS1-ReN6b"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-xl font-bold text-on-background">emelSwap</h3>
+<span class="bg-primary-container text-on-primary-container text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-tighter">Native</span>
+</div>
+<p class="text-on-surface-variant text-sm font-medium tracking-wide">EMEL</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xl font-bold text-on-background">$13,350.42</p>
+<p class="text-tertiary-dim text-sm font-bold">+28.4%</p>
+</div>
+</div>
+<!-- Allocation Progress -->
+<div class="space-y-2">
+<div class="flex justify-between items-end text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">
+<span>Allocation: 9.4%</span>
+<span>4,200 EMEL</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full w-[9.4%] shadow-[0_0_15px_rgba(253,208,19,0.4)]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Call to Action -->
+<button class="mt-16 bg-surface-container-high text-on-surface hover:text-primary-container border border-white/5 px-12 py-5 rounded-full font-bold transition-all flex items-center gap-3 active:scale-95 group">
+<span class="material-symbols-outlined text-primary-container group-hover:rotate-180 transition-transform duration-500">add</span>
+            Add Asset to Portfolio
+        </button>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full flex justify-center pb-8 z-50 md:hidden">
+<div class="w-[90%] max-w-md bg-[#131313]/80 backdrop-blur-xl rounded-full border border-white/5 flex justify-between items-center px-4 py-2 shadow-2xl shadow-black h-20">
+<!-- Trade (Active) -->
+<a class="flex flex-col items-center justify-center bg-[#FFD217] text-[#0e0e0e] rounded-full px-6 py-2 scale-110 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Trade</span>
+</a>
+<!-- Earn -->
+<a class="flex flex-col items-center justify-center text-white/40 px-4 py-2 hover:text-white transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Earn</span>
+</a>
+<!-- Vote -->
+<a class="flex flex-col items-center justify-center text-white/40 px-4 py-2 hover:text-white transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">how_to_vote</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Vote</span>
+</a>
+<!-- Wallet -->
+<a class="flex flex-col items-center justify-center text-white/40 px-4 py-2 hover:text-white transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Wallet</span>
+</a>
+</div>
+</nav>
+<!-- Decorative Glow Element -->
+<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-primary-container/5 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
+</body></html>
