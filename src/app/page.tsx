@@ -1,9 +1,17 @@
 'use client';
 
 import React from 'react';
-import { Settings, ArrowDownUp, ChevronDown } from 'lucide-react';
+import { ArrowDownUp, ChevronDown } from 'lucide-react';
 
 export default function SwapPage() {
+  const [slippage, setSlippage] = React.useState('5');
+  const [isAutoSlippage, setIsAutoSlippage] = React.useState(true);
+
+  const handleSlippageChange = (val: string) => {
+    setSlippage(val);
+    setIsAutoSlippage(false);
+  };
+
   return (
     <div className="flex-grow flex flex-col items-center justify-center px-4 pt-8 pb-40">
       <div className="w-full max-w-[500px] relative z-10">
@@ -17,10 +25,6 @@ export default function SwapPage() {
 
         {/* Swap Interface (The Monolith) */}
         <div className="glass-morphism rounded-lg p-3 relative overflow-hidden">
-          {/* Settings */}
-          <div className="absolute top-8 right-8 z-10 text-white/30 hover:text-primary transition-colors cursor-pointer">
-            <Settings size={20} strokeWidth={2.5} />
-          </div>
 
           <div className="space-y-1.5">
             {/* Input Asset */}
@@ -31,7 +35,7 @@ export default function SwapPage() {
               </div>
               <div className="flex items-center justify-between">
                 <input 
-                  className="bg-transparent border-none p-0 text-5xl font-light focus:ring-0 focus:outline-none w-full placeholder:text-white/5 tracking-tighter" 
+                  className="bg-transparent border-none p-0 text-4xl font-light focus:ring-0 focus:outline-none w-full placeholder:text-white/5 tracking-tighter" 
                   placeholder="0.00" 
                   type="text" 
                   defaultValue="1.00"
@@ -61,7 +65,7 @@ export default function SwapPage() {
               </div>
               <div className="flex items-center justify-between">
                 <input 
-                  className="bg-transparent border-none p-0 text-5xl font-light focus:ring-0 focus:outline-none w-full placeholder:text-white/5 tracking-tighter" 
+                  className="bg-transparent border-none p-0 text-4xl font-light focus:ring-0 focus:outline-none w-full placeholder:text-white/5 tracking-tighter" 
                   placeholder="0.00" 
                   type="text" 
                   value="2,431.12"
@@ -80,40 +84,42 @@ export default function SwapPage() {
 
           {/* Details Panel */}
           <div className="px-8 py-8 space-y-6">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center pb-6 border-b border-white/[0.03]">
               <span className="text-white/20 text-[10px] font-bold uppercase letter-spacing-widest">Exchange Rate</span>
               <span className="text-white/80 text-[11px] font-mono bg-white/5 px-3 py-1 rounded-sm border border-white/5">1 ETH ≈ 2,431.12 USDC</span>
             </div>
 
-            {/* Optimal Route Visualization */}
-            <div className="py-2 border-y border-white/[0.03]">
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-white/20 text-[10px] font-bold uppercase letter-spacing-widest">Optimal Route</span>
-                <span className="text-primary text-[10px] font-mono font-bold">SAVING $12.40</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full border border-primary/50"></div>
-                <div className="flex-grow blueprint-line opacity-20"></div>
-                <div className="px-2 py-1 bg-white/5 border border-white/10 text-[9px] font-mono text-white/60 uppercase">V4 Pool</div>
-                <div className="flex-grow blueprint-line opacity-20"></div>
-                <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(255,210,23,0.5)]"></div>
-              </div>
-            </div>
 
-            {/* Transaction Specifics Moved Here */}
-            <div className="flex justify-between text-right gap-6">
+            {/* Transaction Specifics */}
+            <div className="flex justify-between items-end gap-6">
               <div className="flex-1 text-left space-y-1">
                 <p className="text-[9px] text-white/20 uppercase letter-spacing-widest font-black">Gas Est.</p>
                 <p className="text-[11px] font-mono text-white/70">~ $4.21</p>
               </div>
-              <div className="flex-1 text-right space-y-1">
+              <div className="text-right space-y-2">
                 <p className="text-[9px] text-white/20 uppercase letter-spacing-widest font-black">Max Slippage</p>
-                <p className="text-[11px] font-mono text-white/70">0.50%</p>
+                <div className="flex items-center gap-2 bg-white/5 p-1 rounded-full border border-white/5">
+                  <button 
+                    onClick={() => { setIsAutoSlippage(true); setSlippage('5'); }}
+                    className={`px-3 py-1 text-[9px] font-black uppercase tracking-tighter rounded-full transition-all ${isAutoSlippage ? 'bg-primary text-black' : 'text-white/30 hover:text-white'}`}
+                  >
+                    Auto
+                  </button>
+                  <div className="relative flex items-center">
+                    <input 
+                      type="text" 
+                      value={isAutoSlippage ? '5.0' : slippage}
+                      onChange={(e) => handleSlippageChange(e.target.value)}
+                      className={`w-12 bg-transparent border-none p-0 text-right text-[11px] font-mono focus:ring-0 focus:outline-none placeholder:text-white/10 ${isAutoSlippage ? 'text-white/70' : 'text-white/70'}`}
+                    />
+                    <span className={`text-[10px] ml-1 font-bold ${isAutoSlippage ? 'text-white/70' : 'text-white/30'}`}>%</span>
+                  </div>
+                </div>
               </div>
             </div>
 
             <button className="w-full py-5 rounded-full bg-primary text-black font-black text-xs uppercase tracking-[0.3em] gold-glow hover:brightness-110 active:scale-[0.98] transition-all duration-300">
-              Execute Swap
+              Swap
             </button>
           </div>
         </div>

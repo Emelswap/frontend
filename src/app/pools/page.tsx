@@ -64,19 +64,14 @@ export default function PoolsPage() {
       {/* Header */}
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12">
         <div className="space-y-4">
-          <span className="text-primary font-bold tracking-[0.2em] uppercase text-xs block">Liquidity Provision</span>
-          <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-white uppercase italic">
-            Vault <span className="font-extralight not-italic text-white/30">Pools</span>
+          <h1 className="text-3xl md:text-4xl font-black tracking-tighter text-white uppercase">
+            Liquidity Pools
           </h1>
         </div>
         <div className="flex gap-4">
-          <button className="bg-white/[0.03] text-white hover:text-primary border border-white/5 hover:border-primary/20 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-[0.2em] transition-all flex items-center gap-3 backdrop-blur-md">
-            <Plus size={16} />
-            Create Pool
-          </button>
           <button className="bg-primary text-black px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-[0.2em] transition-all gold-glow hover:brightness-110 active:scale-95 flex items-center gap-3">
             <Plus size={16} strokeWidth={3} />
-            Add Liquidity
+            Create Pool
           </button>
         </div>
       </header>
