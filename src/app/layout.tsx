@@ -26,6 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      </head>
       <body
         className={`${ibmPlexSans.variable} font-ibm-plex antialiased min-h-screen flex flex-col bg-black text-white text-sm selection:bg-primary selection:text-black radial-glow`}
       >
@@ -37,7 +40,7 @@ export default function RootLayout({
 
           <div className="flex flex-col min-h-screen relative z-10">
             <Navbar />
-            <main className="flex-1">
+            <main className="flex-1 pt-24">
               {children}
             </main>
             <Footer />

@@ -5,7 +5,7 @@ import { Settings, ArrowDownUp, ChevronDown } from 'lucide-react';
 
 export default function SwapPage() {
   return (
-    <main className="flex-grow flex flex-col items-center justify-center px-4 pt-32 pb-40">
+    <div className="flex-grow flex flex-col items-center justify-center px-4 pt-8 pb-40">
       <div className="w-full max-w-[500px] relative z-10">
         
         {/* Header Section (Simplified) */}
@@ -118,6 +118,6 @@ export default function SwapPage() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

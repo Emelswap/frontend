@@ -59,7 +59,7 @@ export default function PoolsPage() {
   );
 
   return (
-    <main className="pt-32 pb-40 px-6 max-w-6xl mx-auto relative z-10">
+    <div className="pt-8 pb-40 px-6 max-w-6xl mx-auto relative z-10">
       
       {/* Header */}
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12">
@@ -174,6 +174,6 @@ export default function PoolsPage() {
           )}
         </div>
       </div>
-    </main>
+    </div>
   );
 }

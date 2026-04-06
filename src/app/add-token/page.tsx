@@ -148,116 +148,112 @@ export default function AddToken() {
   };
 
   return (
-    <div className="flex-grow flex items-center justify-center p-6 relative overflow-hidden min-h-[calc(100vh-160px)]">
+    <div className="flex-grow flex flex-col items-center justify-center px-4 pb-40 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-1/4 -right-20 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
       <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-primary/5 rounded-full blur-[100px] pointer-events-none animate-pulse" style={{ animationDelay: '1s' }}></div>
       
-      {/* Add Token Form Card */}
-      <div className="w-full max-w-xl bg-surface border border-primary/10 p-8 md:px-12 md:py-10 relative z-10 shadow-2xl overflow-hidden">
-        {/* Form Header */}
-        <div className="mb-8 text-center md:text-left">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary block mb-2">Internal Protocol Import</span>
-          <h1 className="text-4xl font-black tracking-tighter text-white leading-none mb-2 uppercase">Add Custom Token</h1>
-          <p className="text-slate-400 text-sm tracking-tight opacity-80">Import a token to trade on Arc Testnet</p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Chain Selection (Read Only) */}
-          <div className="space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Chain ID</label>
-            <div className="w-full bg-surface/50 border border-primary/10 p-4 flex items-center justify-between group cursor-not-allowed">
-              <span className="text-white font-bold text-sm">Arc Testnet (5042002)</span>
-              <span className="material-symbols-outlined text-primary/40 text-sm">lock</span>
-            </div>
+      {/* Add Token Form Card (The Monolith style) */}
+      <div className="w-full max-w-[550px] glass-morphism rounded-lg p-3 relative z-10 shadow-2xl overflow-hidden mt-8">
+        <div className="bg-white/[0.03] border border-white/[0.05] rounded-lg p-8 md:p-10">
+          {/* Form Header */}
+          <div className="mb-10 text-center">
+            
+            <h1 className="text-3xl font-black tracking-tighter text-white leading-none mb-3 uppercase">Add Custom Token</h1>
+            <p className="text-white/30 text-[10px] uppercase font-bold tracking-widest opacity-80">Arc Testnet</p>
           </div>
 
-          {/* Token Contract Address */}
-          <div className="space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Token Contract Address</label>
-            <div className="relative group">
-              <input 
-                className="w-full bg-black border border-primary/20 p-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-primary transition-colors font-mono text-sm" 
-                placeholder="0x..." 
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                required
-              />
-              <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-                <span className="material-symbols-outlined text-slate-600 text-lg">search</span>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Chain Selection (Fixed) */}
+            <div className="space-y-2">
+              <label className="text-[9px] font-black uppercase tracking-widest text-white/20">Chain Configuration</label>
+              <div className="w-full bg-white/5 border border-white/5 p-4 flex items-center justify-between group cursor-not-allowed rounded-sm">
+                <span className="text-white/60 font-bold text-[11px] uppercase tracking-wider font-mono">Arc Testnet (5042002)</span>
+                <span className="material-symbols-outlined text-primary/40 text-sm">lock</span>
               </div>
             </div>
-          </div>
 
-          {/* Logo Section */}
-          <div className="space-y-2">
-            <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Token Logo Section</label>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Upload Box */}
-              <label 
-                className="border border-dashed border-primary/30 p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-primary/5 transition-all group overflow-hidden relative"
-              >
+            {/* Token Contract Address */}
+            <div className="space-y-2">
+              <label className="text-[9px] font-black uppercase tracking-widest text-white/20">Contract Address</label>
+              <div className="relative group">
                 <input 
-                  type="file" 
-                  className="hidden" 
-                  accept="image/*"
-                  onChange={handleFileChange}
+                  className="w-full bg-black/40 border border-white/10 p-4 text-white placeholder:text-white/10 focus:outline-none focus:border-primary/50 transition-all font-mono text-xs rounded-sm" 
+                  placeholder="0x..." 
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  required
                 />
-                {previewUrl ? (
-                   <img src={previewUrl} className="absolute inset-0 w-full h-full object-contain p-2 opacity-50 group-hover:opacity-100 transition-opacity" alt="preview" />
-                ) : (
-                  <>
-                    <span className="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">cloud_upload</span>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-white">Upload Logo</span>
-                  </>
-                )}
-              </label>
-              
-              {/* Preview Box Detail */}
-              <div className="bg-surface/50 border border-primary/10 p-4 flex flex-col justify-center items-center text-center">
-                {file ? (
-                  <span className="text-[10px] font-bold text-primary truncate max-w-full uppercase tracking-tighter">{file.name}</span>
-                ) : (
-                  <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">No logo selected</span>
-                )}
+                <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                  <span className="material-symbols-outlined text-white/10 text-lg">search</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Warning Alert */}
-          <div className="bg-red-500/5 border-l-2 border-red-500 p-4 flex gap-4">
-            <span className="material-symbols-outlined text-red-500 text-xl">warning</span>
-            <p className="text-[10px] leading-relaxed text-red-400 font-bold uppercase tracking-wide">
-              Verified Smart Contracts only. Import at your own risk. This action is recorded on the Public Ledger.
-            </p>
-          </div>
-
-          {/* Status Message */}
-          {message.text && (
-            <div className={`p-4 text-xs font-bold uppercase tracking-widest border ${
-              message.type === 'error' ? 'bg-red-500/10 border-red-500/50 text-red-400' : 'bg-primary/10 border-primary/50 text-primary'
-            }`}>
-              {message.text}
+            {/* Logo Section */}
+            <div className="space-y-2">
+              <label className="text-[9px] font-black uppercase tracking-widest text-white/20">Visual Identity</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {/* Upload Box */}
+                <label 
+                  className="border border-dashed border-white/10 p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-white/5 transition-all group overflow-hidden relative rounded-sm"
+                >
+                  <input 
+                    type="file" 
+                    className="hidden" 
+                    accept="image/*"
+                    onChange={handleFileChange}
+                  />
+                  {previewUrl ? (
+                     <img src={previewUrl} className="absolute inset-0 w-full h-full object-contain p-2 opacity-40 group-hover:opacity-100 transition-opacity" alt="preview" />
+                  ) : (
+                    <>
+                      <span className="material-symbols-outlined text-white/20 mb-2 group-hover:text-primary transition-colors">cloud_upload</span>
+                      <span className="text-[9px] font-black uppercase tracking-widest text-white/30 group-hover:text-white/60">Upload Icon</span>
+                    </>
+                  )}
+                </label>
+                
+                {/* Preview Box Detail */}
+                <div className="bg-black/20 border border-white/5 p-4 flex flex-col justify-center items-center text-center rounded-sm">
+                  {file ? (
+                    <span className="text-[10px] font-bold text-primary truncate max-w-full uppercase tracking-tighter">{file.name}</span>
+                  ) : (
+                    <span className="text-[10px] font-bold text-white/10 uppercase tracking-widest">Awaiting File...</span>
+                  )}
+                </div>
+              </div>
             </div>
-          )}
 
-          {/* Primary Action */}
-          <div className="pt-2">
-            <button 
-              disabled={loading}
-              className={`w-full h-14 bg-primary text-black font-black uppercase tracking-[0.2em] text-sm transition-all flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,210,23,0.2)] hover:shadow-primary/40 ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:brightness-110 active:scale-[0.98]'}`}
-              type="submit"
-            >
-              {loading ? 'Processing...' : 'Add Token'}
-              <span className="material-symbols-outlined text-sm font-black">arrow_forward</span>
-            </button>
-          </div>
-        </form>
+            {/* Warning Alert */}
+            <div className="bg-amber-500/5 border-l border-amber-500/30 p-4 flex gap-4 rounded-sm">
+              <span className="material-symbols-outlined text-amber-500/50 text-lg">warning</span>
+              <p className="text-[9px] leading-relaxed text-amber-500/60 font-bold uppercase tracking-wide">
+                Strict Verification Required. Import at own risk.
+              </p>
+            </div>
 
-        {/* Decorative Graphic */}
-        <div className="hidden lg:block absolute -right-4 -bottom-4 opacity-[0.03] pointer-events-none select-none">
-          <div className="text-[120px] font-black tracking-tighter leading-none text-primary">IMPORT</div>
+            {/* Status Message */}
+            {message.text && (
+              <div className={`p-4 text-[10px] font-bold uppercase tracking-widest border rounded-sm ${
+                message.type === 'error' ? 'bg-red-500/10 border-red-500/20 text-red-400' : 'bg-primary/10 border-primary/20 text-primary'
+              }`}>
+                {message.text}
+              </div>
+            )}
+
+            {/* Primary Action */}
+            <div className="pt-2">
+              <button 
+                disabled={loading}
+                className={`w-full py-5 rounded-full bg-primary text-black font-black uppercase tracking-[0.3em] text-xs transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,210,23,0.15)] hover:shadow-primary/40 ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:brightness-110 active:scale-[0.98]'}`}
+                type="submit"
+              >
+                {loading ? 'Processing...' : 'Add token to list'}
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

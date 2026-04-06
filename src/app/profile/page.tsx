@@ -10,7 +10,7 @@ export default function ProfilePage() {
   ];
 
   return (
-    <main className="pt-32 pb-40 px-6 max-w-4xl mx-auto flex flex-col items-center relative z-10">
+    <div className="pt-8 pb-40 px-6 max-w-4xl mx-auto flex flex-col items-center relative z-10">
       
       {/* Hero Section */}
       <section className="w-full text-center mb-16">
@@ -84,6 +84,6 @@ export default function ProfilePage() {
         <span className="material-symbols-outlined text-primary group-hover:rotate-180 transition-transform duration-500">add</span>
         Add Asset to Profile
       </button>
-    </main>
+    </div>
   );
 }
