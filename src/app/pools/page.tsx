@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import Link from 'next/link';
 import { Search, Plus, Droplets } from 'lucide-react';
+import { useState } from 'react';
 
 export default function PoolsPage() {
   const [addressSearch, setAddressSearch] = useState('');
@@ -69,10 +70,10 @@ export default function PoolsPage() {
           </h1>
         </div>
         <div className="flex gap-4">
-          <button className="bg-primary text-black px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-[0.2em] transition-all gold-glow hover:brightness-110 active:scale-95 flex items-center gap-3">
+          <Link href="/pools/create" className="bg-primary text-black px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-[0.2em] transition-all gold-glow hover:brightness-110 active:scale-95 flex items-center gap-3">
             <Plus size={16} strokeWidth={3} />
             Create Pool
-          </button>
+          </Link>
         </div>
       </header>
 

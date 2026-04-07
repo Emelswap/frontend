@@ -74,7 +74,7 @@ export default function ActivityPage() {
   const [filterOpen, setFilterOpen] = useState(false);
 
   return (
-    <main className="pt-32 pb-40 px-6 max-w-[1200px] mx-auto relative z-10">
+    <main className="pt-8 pb-40 px-6 max-w-[1200px] mx-auto relative z-10">
       
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
