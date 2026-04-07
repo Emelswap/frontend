@@ -70,7 +70,7 @@ const transactions = [
   },
 ];
 
-export default function TransactionsPage() {
+export default function ActivityPage() {
   const [filterOpen, setFilterOpen] = useState(false);
 
   return (
@@ -79,8 +79,8 @@ export default function TransactionsPage() {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
         <div>
-          <h1 className="text-5xl font-black tracking-tighter mb-3 uppercase italic text-white">
-            Activity <span className="text-primary font-light not-italic">Vault</span>
+          <h1 className="text-4xl font-black tracking-tighter mb-3 uppercase text-white">
+            Activity Vault
           </h1>
           <p className="text-white/50 text-lg max-w-2xl font-medium">
             Detailed log of your on-chain movements across the emelSwap liquidity network.
@@ -218,20 +218,6 @@ export default function TransactionsPage() {
             Next Page
           </button>
         </div>
-      </div>
-
-      {/* Security Section */}
-      <div className="mt-20 p-10 bg-white/[0.02] border border-white/5 rounded-[2.5rem]">
-        <h3 className="text-xl font-black mb-4 uppercase tracking-tight text-white">Security & Protocol Log</h3>
-        <p className="text-white/40 text-sm leading-relaxed mb-6 font-medium">
-          All transaction history displayed is fetched directly from the emelSwap indexing nodes. 
-          On-chain data is immutable, but pending transactions may be subject to network congestion or slippage adjustments. 
-          Ensure your explorer links match the transaction hashes for verification.
-        </p>
-        <button className="text-primary font-black uppercase text-[10px] tracking-[0.3em] flex items-center gap-2 hover:translate-x-1 transition-transform group">
-          View security documentation 
-          <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
-        </button>
       </div>
     </main>
   );

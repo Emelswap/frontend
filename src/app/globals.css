@@ -8,7 +8,7 @@
   --color-error: #ff7351;
   --color-tertiary-dim: #d2e45c;
   
-  --font-ibm-plex: "IBM Plex Sans", sans-serif;
+  --font-inter: "Inter", sans-serif;
   --radius-DEFAULT: 1.5rem;
   --radius-lg: 2.5rem;
   --radius-xl: 3.5rem;
@@ -22,7 +22,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-ibm-plex);
+  font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
 }
 

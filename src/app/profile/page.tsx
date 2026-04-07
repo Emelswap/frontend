@@ -78,12 +78,6 @@ export default function ProfilePage() {
           </div>
         ))}
       </div>
-
-      {/* Call to Action */}
-      <button className="mt-16 bg-white/[0.03] text-white hover:text-primary border border-white/5 hover:border-primary/20 px-12 py-5 rounded-full font-black text-[10px] uppercase tracking-[0.3em] transition-all flex items-center gap-4 active:scale-95 group backdrop-blur-md shadow-2xl">
-        <span className="material-symbols-outlined text-primary group-hover:rotate-180 transition-transform duration-500">add</span>
-        Add Asset to Profile
-      </button>
     </div>
   );
 }

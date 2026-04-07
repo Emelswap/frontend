@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans } from "next/font/google";
+import { Inter, IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const ibmPlexSans = IBM_Plex_Sans({
-  variable: "--font-ibm-plex",
+const inter = JetBrains_Mono({
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "emelSwap | Ultra-Premium DEX",
-  description: "High-performance decentralized exchange on Arc Network",
+  title: "emelSwap",
+  description: "Decentralized exchange on Arc Network",
   icons: {
     icon: "/emelverse.jpeg",
   },
@@ -30,7 +30,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
       </head>
       <body
-        className={`${ibmPlexSans.variable} font-ibm-plex antialiased min-h-screen flex flex-col bg-black text-white text-sm selection:bg-primary selection:text-black radial-glow`}
+        className={`antialiased min-h-screen flex flex-col bg-black text-white text-sm selection:bg-primary selection:text-black radial-glow`}
       >
         <Providers>
           {/* Ambient Background Effects */}

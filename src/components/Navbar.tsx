@@ -18,7 +18,7 @@ export default function Navbar() {
   const navLinks = [
     { label: 'Swap', href: '/' },
     { label: 'Pools', href: '/pools' },
-    { label: 'Activity', href: '/transactions' },
+    { label: 'Activity', href: '/activity' },
     { label: 'Profile', href: '/profile' },
   ];
 
